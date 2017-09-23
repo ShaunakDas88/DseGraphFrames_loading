@@ -120,12 +120,12 @@ object LoadAmazonGraph {
 		this.spark = SparkSession.builder.appName("Amazon GraphFrames Loading").getOrCreate()
 
 		// get access to our graph
-		this.graph_name = "graph_stress"
+		this.graph_name = args(0)
 
 		// create our graph schema
 		this.create_schema()
 
-		// create the appropriate DataFrames needed 
+		// create the appropriate DataFrames needed from files within DSEFS 
 		this.metadata_df = spark.read.json("metadata.json")
 		this.reviews_df = spark.read.json("reviews.json")
 
