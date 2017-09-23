@@ -117,10 +117,9 @@ object LoadAmazonGraph {
 	}
 
 	def main(args: Array[String]) {
-		this.spark = SparkSession.builder.appName("Amazon GraphFrames Loading").getOrCreate()
-
 		// get access to our graph
-		this.graph_name = args(0)
+                this.graph_name = args(0)
+		this.spark = SparkSession.builder.appName("Amazon data -> GraphFrames -> DSE Graph %s".format(this.graph_name)).getOrCreate()
 
 		// create our graph schema
 		this.create_schema()
